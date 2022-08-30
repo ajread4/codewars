@@ -1,3 +1,3 @@
 # Codewars
 
-Practice Python scripts for various Codewars challenges. 
+Practice with various programming languages. 
