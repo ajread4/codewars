@@ -3,13 +3,42 @@
 # Language: Python
 # By: AJ Read
 
-import collections
+import operator
 
 def decode_smoke_signals(days):
-	final_dict=[]
-	for num,action in days: 
+    f_list={}
+    final_dict={}
+    full_list=[]
+    full_action=[]
+    full_num=[]
+    for num,action in days:
+        for n in num: 
+            for a in action:
+                full_list.append(str(n)+"--"+str(a))
+                full_action.append(a)
+            full_num.append(n)
 
-	return final_dict
+
+    full_action=list(set(full_action))          
+    full_num=list(set(full_num))
+    final_len=len(full_action)    
+
+    for item in full_list:
+        if item in f_list:
+            f_list[item]+=1
+        else: 
+            f_list[item]=1
+
+    for k,v in f_list.items():
+        number=k.split("--")[0]
+        act=k.split("--")[1]
+        if number in final_dict: 
+            if act in final_dict.values():
+                
+        else: 
+            final_dict[number]=act
+
+    return final_dict
 
 print(decode_smoke_signals(
             [(["8.2.1","4.3.4","1"],["Ambush in the jungle","General assassinated","Ambush in the jungle"]),
